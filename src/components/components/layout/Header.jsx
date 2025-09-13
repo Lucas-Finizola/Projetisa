@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from '../../../assets/logo.PNG';
 
 const Header = () => {
   return (
-    <header className="bg-gray-800 text-white p-4">
+    <header className="bg-green-600 text-white p-4 sticky top-0 z-50 shadow-md">
       <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">Projetos</div>
+        <img src={logo} alt="Logo da Projetisa" className="h-12" />
         <div>
           <ul className="flex space-x-4">
             <li><a href="/" className="hover:text-gray-300">Início</a></li>
@@ -21,4 +22,3 @@ const Header = () => {
 };
 
 export default Header;
-
