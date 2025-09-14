@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import { List, Grid } from 'lucide-react';
 
 // Importando as imagens de serviços
-import montagemEstruturaSolo from '../assets/Montagem de Estrutura de Solo para Placas Solares 2.png';
-import escavacaoMecanizada from '../assets/servico_escavacao.jpg';
-import redeSubterranea from '../assets/Rede Subterranea de Media Tensao Eficiencia e Estetica para a Distribuicao de Energia 1.png';
-import conexaoMediaTensaoConvencional from '../assets/Montagem de Estrutura de Conexão de media tensao para rede convencional.png';
-import montagemSubestacaoAbrigada from '../assets/Montagem de Subestação Abrigada Confiabilidade e Segurança Energética.jpg';
-import subestacaoAerea from '../assets/Subestacao Aerea Distribuicao de Energia Confiavel e Eficiente.png';
-import conexaoMediaTensao from '../assets/Montagem de Estrutura de Conexão de Média Tensão.jpg';
-import entradaMediaTensaoCubiculo from '../assets/Benefícios da Estrutura de Entrada de Média Tensão para Cubículo de Medição.jpg';
-import beneficiosServicos from '../assets/Benefícios de Nossos Serviços.jpg';
-import planejamentoOrganizado from '../assets/Planejamento Organizado.jpg';
+import montagemEstruturaSolo from '../assets/images/Montagem de Estrutura de Solo para Placas Solares 2.png';
+import escavacaoMecanizada from '../assets/images/servico_escavacao.jpg';
+import redeSubterranea from '../assets/images/Rede Subterranea de Media Tensao Eficiencia e Estetica para a Distribuicao de Energia 1.png';
+import conexaoMediaTensaoConvencional from '../assets/images/Montagem de Estrutura de Conexão de media tensao para rede convencional.png';
+import montagemSubestacaoAbrigada from '../assets/images/Montagem de Subestação Abrigada Confiabilidade e Segurança Energética.jpg';
+import subestacaoAerea from '../assets/images/Subestacao Aerea Distribuicao de Energia Confiavel e Eficiente.png';
+import conexaoMediaTensao from '../assets/images/Montagem de Estrutura de Conexão de Média Tensão.jpg';
+import entradaMediaTensaoCubiculo from '../assets/images/Benefícios da Estrutura de Entrada de Média Tensão para Cubículo de Medição.jpg';
+import beneficiosServicos from '../assets/images/Benefícios de Nossos Serviços.jpg';
+import planejamentoOrganizado from '../assets/images/Planejamento Organizado.jpg';
 
 const Services = () => {
   const [viewMode, setViewMode] = useState('grid');

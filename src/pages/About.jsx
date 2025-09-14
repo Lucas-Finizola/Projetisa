@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { Users, Target, Eye, Gem, ArrowRight, Wind, Handshake } from 'lucide-react';
 
 // Importando as imagens da equipe
-import equipe1 from '../assets/equipe1.jpeg';
-import equipe2 from '../assets/equipe2.jpeg';
-import equipe3 from '../assets/equipe3.jpg';
+import equipe1 from '../assets/images/equipe1.jpeg';
+import equipe2 from '../assets/images/equipe2.jpeg';
+import equipe3 from '../assets/images/equipe3.jpg';
 
 // Dados da equipe (substitua com os dados e imagens reais)
 const teamMembers = [

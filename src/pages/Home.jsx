@@ -18,7 +18,7 @@ import {
   Construction
 } from 'lucide-react';
 
-import heroImage from '../assets/projetisa_projeto_exemplo.png';
+import heroImage from '../assets/images/projetisa_projeto_exemplo.png';
 
 const Home = () => {
   const [formData, setFormData] = useState({

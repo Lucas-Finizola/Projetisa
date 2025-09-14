@@ -2,33 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Sun,
-  Zap,
   Building,
-  ArrowRight,
-  Construction
+  Zap,
+  Construction,
+  ArrowRight
 } from 'lucide-react';
 
 const otherServicesData = [
   {
-    icon: <Sun className="w-10 h-10" />,
-    title: "Estrutura de Solo para Placas Solares",
-    description: "Soluções robustas para aproveitar ao máximo a energia solar, com instalação precisa e segura."
+    icon: <Building className="w-10 h-10" />,
+    title: "Montagens e Estruturas",
+    description: "Soluções completas para estruturas de solo, conexão em média tensão e mais."
   },
   {
     icon: <Zap className="w-10 h-10" />,
-    title: "Rede Subterrânea de Média Tensão",
-    description: "Solução moderna para distribuição de energia, com instalação confiável e esteticamente agradável."
-  },
-  {
-    icon: <Building className="w-10 h-10" />,
-    title: "Montagem de Subestação Abrigada",
-    description: "Soluções completas e confiáveis para atender às suas necessidades de distribuição de energia."
+    title: "Redes e Subestações",
+    description: "Implantação e montagem de redes subterrâneas, subestações abrigadas e aéreas."
   },
   {
     icon: <Construction className="w-10 h-10" />,
-    title: "Escavação Mecanizada",
-    description: "Eficiência e produtividade no processo de escavação para suas obras, com equipamentos avançados."
+    title: "Obras de Infraestrutura",
+    description: "Executamos desde a escavação mecanizada até a construção de redes de distribuição completas."
   }
 ];
 
@@ -45,11 +39,11 @@ const OtherServices = () => {
             Soluções Completas em Engenharia Elétrica
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Além da energia solar, a Projetisa oferece um portfólio completo de serviços para atender seu projeto, seja ele residencial, comercial ou industrial.
+            Além da energia solar, oferecemos um portfólio completo para grandes projetos.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
           {otherServicesData.map((service, index) => (
             <motion.div
               key={index}
@@ -65,7 +59,7 @@ const OtherServices = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600">
                 {service.description}
               </p>
             </motion.div>
@@ -82,7 +76,7 @@ const OtherServices = () => {
                 to="/services"
                 className="bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg inline-flex items-center"
               >
-                <span>Ver Todos os Serviços</span>
+                <span>Conheça Todos os Serviços</span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
           </motion.div>

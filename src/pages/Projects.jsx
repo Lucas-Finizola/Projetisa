@@ -1,5 +1,5 @@
 import React from 'react';
-import projectImage from '../assets/projetisa_projeto_exemplo.png';
+import projectImage from '../assets/images/projetisa_projeto_exemplo.png';
 
 const Projects = () => {
   const projects = [
