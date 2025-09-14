@@ -15,7 +15,8 @@ import {
   Star,
   Phone,
   FileText,
-  Wrench
+  Wrench,
+  Construction
 } from 'lucide-react';
 
 // Importar imagens da landing page (estas seriam gerenciadas pelo CMS no futuro)
@@ -129,24 +130,24 @@ const Home = () => {
 
   const otherServices = [
     {
-      icon: <Building className="w-10 h-10" />,
-      title: "Subestações de Energia",
-      description: "Projetos e montagem de subestações de média e alta tensão."
+      icon: <Sun className="w-10 h-10" />,
+      title: "Estrutura de Solo para Placas Solares",
+      description: "Soluções robustas para aproveitar ao máximo a energia solar, com instalação precisa e segura."
     },
     {
       icon: <Zap className="w-10 h-10" />,
-      title: "Redes de Distribuição",
-      description: "Implementação de redes elétricas aéreas e subterrâneas."
+      title: "Rede Subterrânea de Média Tensão",
+      description: "Solução moderna para distribuição de energia, com instalação confiável e esteticamente agradável."
     },
     {
-      icon: <FileText className="w-10 h-10" />,
-      title: "Laudos e Projetos",
-      description: "Elaboração de projetos elétricos e laudos técnicos completos."
+      icon: <Building className="w-10 h-10" />,
+      title: "Montagem de Subestação Abrigada",
+      description: "Soluções completas e confiáveis para atender às suas necessidades de distribuição de energia."
     },
     {
-      icon: <Wrench className="w-10 h-10" />,
-      title: "Manutenção Elétrica",
-      description: "Manutenção preventiva e corretiva para indústria e comércio."
+      icon: <Construction className="w-10 h-10" />,
+      title: "Escavação Mecanizada",
+      description: "Eficiência e produtividade no processo de escavação para suas obras, com equipamentos avançados."
     }
   ];
 
