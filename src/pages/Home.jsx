@@ -55,8 +55,7 @@ const Home = () => {
     }
   };
   
-  const whatsappSpecialistMessage = "Tenho interesse em instalar um painel solar.";
-  const whatsappSpecialistLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappSpecialistMessage)}`;
+  const whatsappSpecialistLink = `https://api.whatsapp.com/send?phone=5583996556931`;
 
   const benefits = [
     {
@@ -551,8 +550,7 @@ const Home = () => {
                   {faq.answer}
                 </p>
               </motion.div>
-            ))}
-          </div>
+            ))}          </div>
         </div>
       </section>
 
