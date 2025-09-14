@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Phone } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateWhatsAppLink } from '../../utils/whatsapp';
+import WhatsappIcon from '../../components/icons/WhatsappIcon';
 
 const ConexaoMediaTensao = () => {
   const pageVariants = {
@@ -54,7 +55,7 @@ const ConexaoMediaTensao = () => {
             </ul>
             <div className="mt-12 text-center border-t pt-8">
                 <p className="text-xl mb-6 text-gray-800">
-                    Busca uma solução confiável e eficiente para sua conexão de média tensão?
+                    Venha falar conosco e solicitar seu orçamento.
                 </p>
                 <a
                   href={whatsappLink}
@@ -62,8 +63,8 @@ const ConexaoMediaTensao = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
-                  <Phone className="mr-3 w-6 h-6" />
-                  Solicitar Serviço
+                  <WhatsappIcon className="mr-3 w-6 h-6" />
+                  Falar com um especialista
                 </a>
             </div>
           </div>
