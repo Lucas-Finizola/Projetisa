@@ -7,14 +7,14 @@ import {
   Leaf,
   TrendingUp,
   Shield,
-  Calculator,
   CheckCircle,
   DollarSign,
   Building,
   ArrowRight,
   Star,
   Phone,
-  Wrench,
+  MessageSquare, // Adicionado
+  Mail, // Adicionado
   Construction
 } from 'lucide-react';
 
@@ -36,16 +36,25 @@ const Home = () => {
     });
   };
 
+  // Função para o formulário Netlify (E-mail)
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Obrigado! Entraremos em contato em breve para sua simulação gratuita!');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      consumption: '',
-      propertyType: 'residencial'
-    });
+    // A lógica de e.preventDefault() não é mais necessária para o Netlify
+    alert('Obrigado! Sua simulação foi enviada por e-mail. Entraremos em contato em breve!');
+  };
+
+  // Função para o botão WhatsApp
+  const handleWhatsAppSubmit = () => {
+    const { name, email, phone, consumption, propertyType } = formData;
+
+    if (!name || !phone || !consumption) {
+      alert('Por favor, preencha pelo menos os campos de nome, WhatsApp e valor da conta.');
+      return;
+    }
+
+    const message = `Olá, equipe da Projetisa!\n\nGostaria de solicitar um orçamento para um projeto de instalação de painéis solares. Seguem meus dados para análise inicial:\n\n- *Nome Completo:* ${name}\n- *WhatsApp para Contato:* ${phone}\n- *E-mail:* ${email || 'Não informado'}\n- *Valor Médio da Conta de Luz:* R$ ${consumption}\n- *Tipo de Propriedade:* ${propertyType}\n\nAguardo o contato de um especialista para darmos continuidade. Obrigado!`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const scrollToHeroForm = () => {
@@ -203,7 +212,7 @@ const Home = () => {
                   href={whatsappSpecialistLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center"
+                  className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center"
                 >
                   <Phone className="mr-2 w-5 h-5" />
                   Falar com Especialista
@@ -224,7 +233,7 @@ const Home = () => {
 
             {/* Formulário Hero com ID */}
             <motion.div
-              id="hero-form" // ID adicionado aqui
+              id="hero-form"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -233,7 +242,14 @@ const Home = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
                 Calcule Sua Economia Agora!
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form 
+                name="simulacao" 
+                method="POST" 
+                data-netlify="true"
+                onSubmit={handleSubmit}
+                className="space-y-4"
+              >
+                <input type="hidden" name="form-name" value="simulacao" />
                 <div>
                   <input
                     type="text"
@@ -249,11 +265,10 @@ const Home = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Seu melhor e-mail"
+                    placeholder="Seu melhor e-mail (opcional)"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-900"
-                    required
                   />
                 </div>
                 <div>
@@ -291,14 +306,27 @@ const Home = () => {
                     <option value="rural">Rural</option>
                   </select>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-lg font-bold text-lg transition-colors"
-                >
-                  QUERO MINHA SIMULAÇÃO GRATUITA!
-                </motion.button>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="button"
+                      onClick={handleWhatsAppSubmit}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg font-bold text-base transition-colors flex items-center justify-center"
+                    >
+                      <MessageSquare className="mr-2 w-5 h-5" />
+                      Enviar por WhatsApp
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-bold text-base transition-colors flex items-center justify-center"
+                    >
+                      <Mail className="mr-2 w-5 h-5" />
+                      Enviar por E-mail
+                    </motion.button>
+                </div>
               </form>
               <p className="text-xs text-gray-600 text-center mt-4">
                 ✓ Seus dados estão seguros conosco
@@ -317,7 +345,7 @@ const Home = () => {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ⚡ ATENÇÃO: Energia Elétrica Subiu 20% em 2024!
+              ⚡ ATENÇÃO: A Tarifa de Energia Não Para de Subir!
             </h2>
             <p className="text-xl mb-6">
               Enquanto as tarifas só aumentam, quem tem energia solar está economizando milhares de reais por ano.
@@ -326,7 +354,7 @@ const Home = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={scrollToHeroForm} // Atualizado
+              onClick={scrollToHeroForm}
               className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors"
             >
               PROTEJA-SE DOS AUMENTOS AGORA!
@@ -499,14 +527,14 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-
+          
           <div className="text-center mt-16">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
-                <Link
+                <Link 
                   to="/services"
                   className="bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg inline-flex items-center"
                 >
@@ -550,7 +578,8 @@ const Home = () => {
                   {faq.answer}
                 </p>
               </motion.div>
-            ))}          </div>
+            ))}
+          </div>
         </div>
       </section>
 
