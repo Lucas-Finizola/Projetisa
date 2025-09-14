@@ -16,6 +16,9 @@ import {
   Phone
 } from 'lucide-react';
 
+// Importar componentes de seções
+import OtherServices from '../components/components/home/OtherServices';
+
 // Importar imagens da landing page (estas seriam gerenciadas pelo CMS no futuro)
 import heroImage from '../assets/projetisa_projeto_exemplo.png'; 
 
@@ -441,6 +444,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Seção Outros Serviços */}
+      <OtherServices />
 
       {/* Seção FAQ */}
       <section className="py-20">
