@@ -14,13 +14,11 @@ import {
   ArrowRight,
   Star,
   Phone,
-  FileText,
   Wrench,
   Construction
 } from 'lucide-react';
 
-// Importar imagens da landing page (estas seriam gerenciadas pelo CMS no futuro)
-import heroImage from '../assets/projetisa_projeto_exemplo.png'; 
+import heroImage from '../assets/projetisa_projeto_exemplo.png';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +38,6 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // No futuro, esta lógica enviaria dados para o Directus ou um serviço de e-mail
     alert('Obrigado! Entraremos em contato em breve para sua simulação gratuita!');
     setFormData({
       name: '',
@@ -51,12 +48,15 @@ const Home = () => {
     });
   };
 
-  const scrollToForm = () => {
-    const element = document.getElementById('simulacao');
+  const scrollToHeroForm = () => {
+    const element = document.getElementById('hero-form');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
+  
+  const whatsappSpecialistMessage = "Tenho interesse em instalar um painel solar.";
+  const whatsappSpecialistLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappSpecialistMessage)}`;
 
   const benefits = [
     {
@@ -176,7 +176,7 @@ const Home = () => {
       <section className="relative min-h-screen flex items-center pt-16">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }} 
+          style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
         </div>
@@ -198,20 +198,13 @@ const Home = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={scrollToForm}
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center"
-                >
-                  <Calculator className="mr-2 w-5 h-5" />
-                  Simule Sua Economia Agora!
-                </motion.button>
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="tel:+5583996556931"
-                  className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center"
+                  href={whatsappSpecialistLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center"
                 >
                   <Phone className="mr-2 w-5 h-5" />
                   Falar com Especialista
@@ -230,8 +223,9 @@ const Home = () => {
               </div>
             </motion.div>
 
-            {/* Formulário Hero */}
+            {/* Formulário Hero com ID */}
             <motion.div
+              id="hero-form" // ID adicionado aqui
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -333,7 +327,7 @@ const Home = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={scrollToForm}
+              onClick={scrollToHeroForm} // Atualizado
               className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors"
             >
               PROTEJA-SE DOS AUMENTOS AGORA!
@@ -467,7 +461,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Seção Outros Serviços */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -506,14 +500,14 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <div className="text-center mt-16">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
-                <Link 
+                <Link
                   to="/services"
                   className="bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg inline-flex items-center"
                 >
@@ -562,7 +556,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Final */}
+      {/* CTA Final Simplificado */}
       <section id="simulacao" className="py-20 bg-green-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -576,76 +570,14 @@ const Home = () => {
             <p className="text-xl mb-8">
               A cada mês que passa, você está perdendo a oportunidade de economizar e contribuir para um futuro mais sustentável.
             </p>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 bg-white/90 p-8 rounded-xl shadow-2xl text-gray-900">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Seu nome completo"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Seu melhor e-mail"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="WhatsApp com DDD"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="number"
-                  name="consumption"
-                  placeholder="Valor da conta de luz (R$)"
-                  value={formData.consumption}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  required
-                />
-              </div>
-              <div>
-                <select
-                  name="propertyType"
-                  value={formData.propertyType}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="residencial">Residencial</option>
-                  <option value="comercial">Comercial</option>
-                  <option value="industrial">Industrial</option>
-                  <option value="rural">Rural</option>
-                </select>
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full bg-green-600 hover:bg-green-800 text-white px-6 py-4 rounded-lg font-bold text-lg transition-colors"
-              >
-                QUERO MINHA SIMULAÇÃO GRATUITA!
-              </motion.button>
-            </form>
-            <p className="text-sm text-white text-center mt-4">
-              ✓ Seus dados estão seguros conosco
-            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={scrollToHeroForm} // Leva o usuário de volta para o formulário principal
+              className="bg-yellow-500 hover:bg-yellow-600 text-black px-10 py-5 rounded-lg font-bold text-xl transition-colors shadow-lg"
+            >
+              QUERO MINHA SIMULAÇÃO GRATUITA!
+            </motion.button>
           </motion.div>
         </div>
       </section>
