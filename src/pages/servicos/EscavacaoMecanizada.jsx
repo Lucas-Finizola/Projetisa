@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EscavacaoMecanizada = () => {
@@ -9,6 +9,10 @@ const EscavacaoMecanizada = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Escavação Mecanizada";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -54,9 +58,20 @@ const EscavacaoMecanizada = () => {
                 <li><strong>Redução de Esforço Manual:</strong> A escavação mecanizada reduz a necessidade de trabalho manual intensivo, minimizando o esforço físico necessário. Isso proporciona um ambiente de trabalho mais seguro e reduz o risco de lesões relacionadas ao trabalho.</li>
                 <li><strong>Flexibilidade e Adaptabilidade:</strong> Os equipamentos de escavação mecanizada são versáteis e podem lidar com diferentes tipos de solo e condições de terreno. Isso nos permite enfrentar uma variedade de projetos e atender às necessidades específicas de cada cliente.</li>
             </ul>
-             <p>
-              Confie em nossa equipe especializada em escavação mecanizada para garantir um processo de escavação eficiente, seguro e de alta qualidade. Entre em contato conosco hoje mesmo e descubra como podemos atender às suas necessidades de escavação de forma profissional e confiável.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Precisa de um serviço de escavação eficiente e profissional para o seu projeto?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>

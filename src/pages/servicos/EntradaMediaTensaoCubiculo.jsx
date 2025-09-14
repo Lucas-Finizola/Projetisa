@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EntradaMediaTensaoCubiculo = () => {
@@ -9,6 +9,10 @@ const EntradaMediaTensaoCubiculo = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Estrutura de Entrada de Média Tensão para Cubículo de Medição";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -41,9 +45,20 @@ const EntradaMediaTensaoCubiculo = () => {
               <li><strong>Segurança Elétrica:</strong> Nossos serviços são realizados em conformidade com as normas de segurança elétrica. Garantimos que a estrutura de entrada seja projetada e instalada adequadamente, minimizando os riscos de falhas elétricas e garantindo a segurança dos equipamentos e das pessoas.</li>
               <li><strong>Conformidade Regulatória:</strong> Nossos serviços estão em conformidade com as regulamentações locais e setoriais. Isso assegura que sua instalação elétrica atenda a todos os requisitos legais e regulatórios, evitando possíveis penalidades e garantindo a conformidade do sistema.</li>
             </ul>
-            <p>
-             Confie em nossa expertise em estruturas de entrada de média tensão para cubículos de medição e garanta uma conexão confiável e eficiente para o fornecimento de energia elétrica. Entre em contato conosco hoje mesmo para discutir suas necessidades e começar a projetar uma solução personalizada para o seu projeto.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Garanta uma conexão confiável e eficiente para seu cubículo de medição.
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>

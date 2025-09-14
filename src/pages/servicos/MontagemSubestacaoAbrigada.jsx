@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MontagemSubestacaoAbrigada = () => {
@@ -9,6 +9,10 @@ const MontagemSubestacaoAbrigada = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Montagem de Subestação Abrigada";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -48,9 +52,22 @@ const MontagemSubestacaoAbrigada = () => {
                 <li><strong>Otimização de Espaço:</strong> A subestação abrigada é projetada para otimizar o espaço disponível, proporcionando uma solução compacta e eficiente. Isso é especialmente vantajoso em áreas com restrições de espaço ou onde a estética do ambiente é importante.</li>
                 <li><strong>Manutenção Simplificada:</strong> A estrutura abrigada facilita a manutenção dos equipamentos da subestação. O acesso aos componentes é mais fácil e seguro, permitindo inspeções regulares, reparos e substituições quando necessário, minimizando o tempo de inatividade do sistema.</li>
             </ul>
-            <p>
-              Confie em nossa experiência em montagem de subestação abrigada para garantir uma distribuição de energia elétrica confiável e eficiente. Entre em contato conosco para discutir suas necessidades específicas e iniciar o projeto da sua subestação abrigada.
-            </p>
+            
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Pronto para garantir uma distribuição de energia confiável e eficiente?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
+
           </div>
         </div>
       </div>

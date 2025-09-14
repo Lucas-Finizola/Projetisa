@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MontagemEstruturaSolo = () => {
@@ -9,6 +9,10 @@ const MontagemEstruturaSolo = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Montagem de Estrutura de Solo para Placas Solares";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -55,6 +59,22 @@ const MontagemEstruturaSolo = () => {
                 <li><strong>Durabilidade e Resistência:</strong> Nossas estruturas são projetadas para resistir a condições climáticas adversas, como ventos fortes, chuvas intensas e variações de temperatura. Isso garante a durabilidade das placas solares ao longo do tempo, sem comprometer a eficiência do sistema.</li>
                 <li><strong>Retorno Sustentável do Investimento:</strong> Ao aproveitar a energia solar com eficiência, você estará reduzindo sua dependência de fontes de energia convencionais e contribuindo para a redução das emissões de carbono.</li>
             </ul>
+
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Pronto para aproveitar o máximo do potencial solar com uma estrutura robusta?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
+
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SubestacaoAerea = () => {
@@ -9,6 +9,10 @@ const SubestacaoAerea = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Subestação Aérea";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -48,9 +52,20 @@ const SubestacaoAerea = () => {
               <li><strong>Manutenção Simplificada:</strong> A manutenção de subestações aéreas é mais acessível e simplificada em comparação com subestações subterrâneas. A identificação e resolução de problemas são mais ágeis, o que contribui para a redução do tempo de inatividade e dos custos de manutenção.</li>
               <li><strong>Flexibilidade e Expansibilidade:</strong> As subestações aéreas são projetadas para serem facilmente adaptáveis e expansíveis. Caso haja um aumento na demanda de energia, é possível adicionar novos equipamentos ou realizar modificações no sistema de forma mais prática e rápida.</li>
             </ul>
-            <p>
-              Confie em nossa experiência na montagem e instalação de subestações aéreas para garantir uma distribuição de energia confiável, eficiente e segura. Entre em contato conosco para mais informações e para iniciar o projeto da sua subestação aérea.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Garanta uma distribuição de energia confiável e eficiente.
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>

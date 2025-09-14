@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ConexaoMediaTensaoConvencional = () => {
@@ -9,6 +9,10 @@ const ConexaoMediaTensaoConvencional = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Montagem de Estrutura de Conexão de Média Tensão para Rede Convencional";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -48,9 +52,20 @@ const ConexaoMediaTensaoConvencional = () => {
                 <li><strong>Eficiência Energética:</strong> Uma estrutura de conexão adequada e bem montada contribui para a eficiência energética de sua rede elétrica, reduzindo perdas de energia e maximizando a distribuição de eletricidade.</li>
                 <li><strong>Durabilidade e Resistência:</strong> Nossos materiais de alta qualidade e montagem profissional garantem a durabilidade e resistência da estrutura de conexão, suportando as condições ambientais e climáticas adversas.</li>
             </ul>
-            <p>
-              Confie em nossa expertise na montagem de estrutura de conexão de média tensão para garantir uma rede elétrica confiável e eficiente. Entre em contato conosco para mais informações e para iniciarmos seu projeto de conexão de energia elétrica.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Precisa de uma conexão de média tensão confiável para sua rede?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>

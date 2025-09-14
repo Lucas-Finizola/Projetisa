@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ConexaoMediaTensao = () => {
@@ -9,6 +9,10 @@ const ConexaoMediaTensao = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Montagem de Estrutura de Conexão de Média Tensão";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -48,9 +52,20 @@ const ConexaoMediaTensao = () => {
               <li><strong>Segurança Elétrica:</strong> Nossas estruturas de conexão são projetadas e montadas levando em consideração a segurança elétrica. Garantimos a proteção adequada contra curto-circuitos, sobrecargas e outras condições adversas, proporcionando um ambiente seguro para as suas instalações.</li>
               <li><strong>Suporte e Manutenção:</strong> Além da montagem, oferecemos suporte técnico contínuo e serviços de manutenção preventiva. Estamos disponíveis para resolver eventuais problemas, realizar inspeções periódicas e garantir o bom funcionamento do sistema de conexão de média tensão.</li>
             </ul>
-            <p>
-              Confie em nossa experiência em montagem de estrutura de conexão de média tensão e desfrute de um sistema elétrico confiável e eficiente. Entre em contato conosco para mais informações e para discutir as necessidades específicas do seu projeto.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Busca uma solução confiável e eficiente para sua conexão de média tensão?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>

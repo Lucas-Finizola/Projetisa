@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const RedeSubterranea = () => {
@@ -9,6 +9,10 @@ const RedeSubterranea = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Rede Subterrânea de Média Tensão";
+  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div
@@ -48,9 +52,20 @@ const RedeSubterranea = () => {
                 <li><strong>Menor Manutenção e Maior Durabilidade:</strong> A rede subterrânea requer menos manutenção em comparação com a rede aérea. Os cabos protegidos estão menos suscetíveis a danos físicos e exposição às intempéries, resultando em uma maior vida útil do sistema e menos interrupções no fornecimento de energia.</li>
                 <li><strong>Menores Perdas de Energia:</strong> A rede subterrânea reduz as perdas de energia elétrica durante a transmissão e a distribuição. A menor exposição a interferências externas e o uso de cabos de alta qualidade contribuem para uma eficiência energética aprimorada e uma distribuição mais eficiente da eletricidade.</li>
             </ul>
-            <p>
-              Confie em nossa expertise em implantação de rede subterrânea de média tensão para fornecer uma solução segura, confiável e esteticamente agradável para a distribuição de energia elétrica. Entre em contato conosco para discutir seus requisitos e iniciar o projeto da sua rede subterrânea.
-            </p>
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Interessado em uma solução de energia mais segura, confiável e esteticamente agradável?
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Solicitar Serviço
+                </a>
+            </div>
           </div>
         </div>
       </div>
