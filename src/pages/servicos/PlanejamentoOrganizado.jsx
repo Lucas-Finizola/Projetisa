@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { generateWhatsAppLink } from '../../utils/whatsapp';
 
 const PlanejamentoOrganizado = () => {
   const pageVariants = {
@@ -9,6 +10,9 @@ const PlanejamentoOrganizado = () => {
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: -100 },
   };
+
+  const serviceName = "Planejamento Organizado";
+  const whatsappLink = generateWhatsAppLink(serviceName);
 
   return (
     <motion.div
@@ -39,9 +43,22 @@ const PlanejamentoOrganizado = () => {
               <li><strong>Integração de Tecnologia:</strong> Acreditamos na importância de incorporar tecnologias avançadas em nossas soluções. Consideramos a integração de sistemas de automação, monitoramento remoto e outras tecnologias inteligentes para melhorar a eficiência operacional e facilitar a manutenção da rede.</li>
               <li><strong>Testes e Comissionamento:</strong> Realizamos testes rigorosos e comissionamento completo do sistema para garantir seu desempenho ideal e conformidade com os padrões regulatórios. Verificamos a continuidade elétrica, a resistência do isolamento e outros parâmetros importantes para garantir a segurança e a confiabilidade da rede.</li>
             </ul>
-            <p>
-              Entre em contato conosco para saber mais sobre nossos serviços de construção de rede de distribuição de média tensão e descubra como podemos ajudar a impulsionar a eficiência energética e promover o desenvolvimento sustentável em sua região.
-            </p>
+            
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Venha falar conosco e solicitar seu orçamento.
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Falar com um especialista
+                </a>
+            </div>
+
           </div>
         </div>
       </div>

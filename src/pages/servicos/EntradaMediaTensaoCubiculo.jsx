@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { generateWhatsAppLink } from '../../utils/whatsapp';
 
 const EntradaMediaTensaoCubiculo = () => {
   const pageVariants = {
@@ -11,8 +12,7 @@ const EntradaMediaTensaoCubiculo = () => {
   };
 
   const serviceName = "Estrutura de Entrada de Média Tensão para Cubículo de Medição";
-  const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`;
-  const whatsappLink = `https://api.whatsapp.com/send?phone=5583996556931&text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink = generateWhatsAppLink(serviceName);
 
   return (
     <motion.div

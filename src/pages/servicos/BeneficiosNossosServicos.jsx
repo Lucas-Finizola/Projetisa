@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { generateWhatsAppLink } from '../../utils/whatsapp';
 
 const BeneficiosNossosServicos = () => {
   const pageVariants = {
@@ -11,9 +12,7 @@ const BeneficiosNossosServicos = () => {
   };
 
   const serviceName = "Benefícios de Nossos Serviços";
-  const phoneNumber = "5583996656931"; // Format: CountryCode + AreaCode + Number
-  const message = `Olá, gostaria de solicitar um orçamento para o serviço: ${serviceName}`;
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappLink = generateWhatsAppLink(serviceName);
 
   return (
     <motion.div
@@ -32,7 +31,6 @@ const BeneficiosNossosServicos = () => {
           </Link>
         </div>
         
-        {/* Service Details Card */}
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
             {serviceName}
@@ -45,24 +43,22 @@ const BeneficiosNossosServicos = () => {
               <li><strong>Segurança:</strong> Nosso compromisso com a segurança é fundamental. Seguimos rigorosamente as normas e regulamentos de segurança durante todo o processo de construção, garantindo um ambiente de trabalho seguro para nossa equipe e para a comunidade em geral.</li>
               <li><strong>Suporte e Manutenção Contínua:</strong> Além da construção, oferecemos suporte e serviços de manutenção contínua para garantir o desempenho ideal do sistema ao longo do tempo. Nossa equipe está pronta para resolver quaisquer problemas e fornecer assistência técnica sempre que necessário.</li>
             </ul>
-            <p>
-              Entre em contato conosco para saber mais sobre nossos serviços de construção de rede de distribuição de média tensão e descubra como podemos ajudar a impulsionar a eficiência energética e promover o desenvolvimento sustentável em sua região.
-            </p>
+            
+            <div className="mt-12 text-center border-t pt-8">
+                <p className="text-xl mb-6 text-gray-800">
+                    Venha falar conosco e solicitar seu orçamento.
+                </p>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  <Phone className="mr-3 w-6 h-6" />
+                  Falar com um especialista
+                </a>
+            </div>
           </div>
-        </div>
-
-        {/* WhatsApp CTA Button */}
-        <div className="mt-16 text-center">
-          <motion.a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white font-bold py-4 px-10 rounded-full hover:bg-green-700 transition-transform transform hover:scale-105 shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Solicitar Orçamento via WhatsApp
-          </motion.a>
         </div>
       </div>
     </motion.div>
