@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects.jsx';
 import Blog from './pages/Blog.jsx';
 import Contact from './pages/Contact.jsx';
+import TestApi from './pages/TestApi.jsx'; // ADICIONADO
 
 // Importando as páginas de serviço
 import MontagemEstruturaSolo from './pages/servicos/MontagemEstruturaSolo.jsx';
@@ -28,6 +29,7 @@ function App() {
         <Header />
         <main>
           <Routes>
+            <Route path="/test-api" element={<TestApi />} /> {/* ADICIONADO */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
