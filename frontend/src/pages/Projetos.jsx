@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { List, Grid } from 'lucide-react';
 
+const STRAPI_BASE_URL = 'http://localhost:1337';
+const STRAPI_API_TOKEN = "b6288aa20ac7a555703be9a71b256ba0e8c9406fb6ade2b5b69ec8310bac82627b198ab8441c08e1069ea7bf5f276c4f11c3824642f4e274ac76d6f6b3349482a67e61908414079552adb9de89d43452bc4be099e09a7b4c27534eb17fbb50814926d94f360dc0583d2bea1c705e6d8327788ca6d00c860f510b7aefbb9422e1";
+
 const Projetos = () => {
   const [viewMode, setViewMode] = useState('grid');
   const [projetos, setProjetos] = useState([]);
@@ -10,10 +13,17 @@ const Projetos = () => {
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-        // Usa o proxy do Vite para evitar problemas com o CORS em desenvolvimento.
-        const response = await fetch('/api/projetos?populate=imagem_destaque');
+        const response = await fetch('/api/projetos?populate=imagem_destaque', {
+          headers: {
+            'Authorization': `Bearer ${STRAPI_API_TOKEN}`
+          }
+        });
         const data = await response.json();
-        setProjetos(data.data);
+        
+        // CORRIGIDO: Verifica a existência do documentId e dos attributes
+        const validProjetos = (data.data || []).filter(p => p && p.documentId && p.attributes);
+        setProjetos(validProjetos);
+
       } catch (error) {
         console.error('Erro ao buscar projetos:', error);
       }
@@ -24,25 +34,13 @@ const Projetos = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.5 }
-    }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
   };
-
-  // A URL base da API agora é o próprio servidor do Vite, que usa o proxy.
-  const API_URL = '';
 
   return (
     <div className="bg-gray-50">
@@ -72,17 +70,24 @@ const Projetos = () => {
           animate="visible"
         >
           {projetos.map((projeto) => {
-            // Construindo a URL completa da imagem usando o proxy
+            // CORRIGIDO: Acessando os dados dentro de 'attributes'
             const imageUrl = projeto.attributes.imagem_destaque?.data?.attributes?.url
-              ? `${API_URL}${projeto.attributes.imagem_destaque.data.attributes.url}`
-              : 'https://via.placeholder.com/400x300'; // Uma imagem placeholder caso não haja imagem
+              ? `${STRAPI_BASE_URL}${projeto.attributes.imagem_destaque.data.attributes.url}`
+              : 'https://via.placeholder.com/400x300';
+            
+            const nomeProjeto = projeto.attributes.nome;
+            const descricaoProjeto = projeto.attributes.descricao;
+
+            const plainDescription = Array.isArray(descricaoProjeto) 
+              ? descricaoProjeto.map(b => b.children.map(c => c.text).join('')).join(' ') 
+              : descricaoProjeto;
 
             return (
               <motion.div
-                key={projeto.id}
+                key={projeto.documentId} // Chave correta
                 variants={itemVariants}
               >
-                <Link to={`/projetos/${projeto.id}`} className="block h-full">
+                <Link to={`/projetos/${projeto.documentId}`} className="block h-full"> {/* Link correto */}
                   <motion.div 
                     className={`bg-white rounded-xl shadow-lg overflow-hidden flex group ${viewMode === 'grid' ? 'flex-col h-full' : 'flex-row items-center'}`}
                     whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
@@ -90,14 +95,13 @@ const Projetos = () => {
                     <div className={`overflow-hidden ${viewMode === 'grid' ? 'h-64' : 'w-48 h-32 flex-shrink-0'}`}>
                       <img 
                         src={imageUrl} 
-                        alt={projeto.attributes.nome}
+                        alt={nomeProjeto} // CORRIGIDO
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
                       />
                     </div>
                     <div className={`flex-grow ${viewMode === 'grid' ? 'p-8' : 'p-6'}`}>
-                      <h2 className={`${viewMode === 'grid' ? 'text-2xl' : 'text-xl'} font-bold text-gray-800 mb-2`}>{projeto.attributes.nome}</h2>
-                      {/* O Strapi retorna o texto rico como markdown, precisamos de uma lib para renderizar ou usamos uma versão em texto puro */}
-                      <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">{projeto.attributes.descricao}</p>
+                      <h2 className={`${viewMode === 'grid' ? 'text-2xl' : 'text-xl'} font-bold text-gray-800 mb-2`}>{nomeProjeto}</h2> {/* CORRIGIDO */}
+                      <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">{plainDescription}</p> {/* CORRIGIDO */}
                     </div>
                   </motion.div>
                 </Link>

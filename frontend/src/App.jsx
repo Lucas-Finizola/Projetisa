@@ -8,13 +8,11 @@ import Services from './pages/Services';
 import Projects from './pages/Projects.jsx';
 import Blog from './pages/Blog.jsx';
 import Contact from './pages/Contact.jsx';
-import TestApi from './pages/TestApi.jsx';
 import Projetos from './pages/Projetos.jsx';
 
-// PASSO 3.1: Importar o novo componente de detalhe do serviço
+// Importações das páginas de detalhes
 import ServiceDetail from './pages/ServiceDetail.jsx';
-
-// As importações antigas de serviços estáticos foram removidas.
+import ProjetoDetail from './pages/ProjetoDetail.jsx'; // Importação estava faltando
 
 function App() {
   return (
@@ -28,21 +26,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projetos" element={<Projetos />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             
-            {/* Rotas de teste (podem ser removidas) */}
-            <Route path="/test-api" element={<TestApi />} />
-            <Route path="/projetos-teste" element={<Projetos />} />
-            
-            {/* 
-              ROTA ATUALIZADA PARA O STRAPI V5
-              A rota agora espera um 'documentId' (uma string longa) em vez 
-              de um 'id' numérico, conforme a nova arquitetura do Strapi.
-            */}
+            {/* Rotas de Detalhes Dinâmicas */}
             <Route path="/servicos/:documentId" element={<ServiceDetail />} />
-
-            {/* As rotas antigas e estáticas para cada serviço foram removidas. */}
+            <Route path="/projetos/:documentId" element={<ProjetoDetail />} />
 
           </Routes>
         </main>
