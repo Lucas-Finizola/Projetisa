@@ -8,19 +8,13 @@ import Services from './pages/Services';
 import Projects from './pages/Projects.jsx';
 import Blog from './pages/Blog.jsx';
 import Contact from './pages/Contact.jsx';
-import TestApi from './pages/TestApi.jsx'; // ADICIONADO
+import TestApi from './pages/TestApi.jsx';
+import Projetos from './pages/Projetos.jsx';
 
-// Importando as páginas de serviço
-import MontagemEstruturaSolo from './pages/servicos/MontagemEstruturaSolo.jsx';
-import EscavacaoMecanizada from './pages/servicos/EscavacaoMecanizada.jsx';
-import RedeSubterranea from './pages/servicos/RedeSubterranea.jsx';
-import ConexaoMediaTensaoConvencional from './pages/servicos/ConexaoMediaTensaoConvencional.jsx';
-import MontagemSubestacaoAbrigada from './pages/servicos/MontagemSubestacaoAbrigada.jsx';
-import SubestacaoAerea from './pages/servicos/SubestacaoAerea.jsx';
-import ConexaoMediaTensao from './pages/servicos/ConexaoMediaTensao.jsx';
-import EntradaMediaTensaoCubiculo from './pages/servicos/EntradaMediaTensaoCubiculo.jsx';
-import BeneficiosNossosServicos from './pages/servicos/BeneficiosNossosServicos.jsx';
-import PlanejamentoOrganizado from './pages/servicos/PlanejamentoOrganizado.jsx';
+// PASSO 3.1: Importar o novo componente de detalhe do serviço
+import ServiceDetail from './pages/ServiceDetail.jsx';
+
+// As importações antigas de serviços estáticos foram removidas.
 
 function App() {
   return (
@@ -29,7 +23,7 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/test-api" element={<TestApi />} /> {/* ADICIONADO */}
+            {/* Rotas principais */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -37,17 +31,18 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             
-            {/* Rotas para os serviços detalhados */}
-            <Route path="/servicos/montagem-estrutura-solo" element={<MontagemEstruturaSolo />} />
-            <Route path="/servicos/escavacao-mecanizada" element={<EscavacaoMecanizada />} />
-            <Route path="/servicos/rede-subterranea" element={<RedeSubterranea />} />
-            <Route path="/servicos/conexao-media-tensao-convencional" element={<ConexaoMediaTensaoConvencional />} />
-            <Route path="/servicos/montagem-subestacao-abrigada" element={<MontagemSubestacaoAbrigada />} />
-            <Route path="/servicos/subestacao-aerea" element={<SubestacaoAerea />} />
-            <Route path="/servicos/conexao-media-tensao" element={<ConexaoMediaTensao />} />
-            <Route path="/servicos/entrada-media-tensao-cubiculo" element={<EntradaMediaTensaoCubiculo />} />
-            <Route path="/servicos/beneficios-nossos-servicos" element={<BeneficiosNossosServicos />} />
-            <Route path="/servicos/planejamento-organizado" element={<PlanejamentoOrganizado />} />
+            {/* Rotas de teste (podem ser removidas) */}
+            <Route path="/test-api" element={<TestApi />} />
+            <Route path="/projetos-teste" element={<Projetos />} />
+            
+            {/* 
+              PASSO 3.2: A nova rota dinâmica. 
+              Isso captura qualquer URL como /servicos/1, /servicos/2, etc.
+              e renderiza o componente ServiceDetail, passando o 'id' para ele.
+            */}
+            <Route path="/servicos/:id" element={<ServiceDetail />} />
+
+            {/* As rotas antigas e estáticas para cada serviço foram removidas. */}
 
           </Routes>
         </main>

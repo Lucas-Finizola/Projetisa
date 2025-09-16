@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publicacoes",
+  "info": {
+    "singularName": "publicacao",
+    "pluralName": "publicacoes",
+    "displayName": "Publicação",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "conteudo": {
+      "type": "richtext"
+    },
+    "imagens": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "data_publicacao": {
+      "type": "date",
+      "required": true
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "Noticia",
+        "Informacao Tecnica",
+        "Estudo de Caso"
+      ]
+    }
+  }
+}
