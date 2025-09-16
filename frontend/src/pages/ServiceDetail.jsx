@@ -37,18 +37,19 @@ const renderDescription = (blocks) => {
 };
 
 const ServiceDetail = () => {
-  const { id } = useParams(); // Pega o ID da URL
+  // ATUALIZADO PARA STRAPI V5: Usa 'documentId' em vez de 'id'
+  const { documentId } = useParams();
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchService = async () => {
-      if (!id) return;
+      if (!documentId) return;
       setLoading(true);
       try {
-        // Busca os dados do serviço específico usando o ID
-        const response = await fetch(`/api/servicos/${id}?populate=*`, {
+        // ATUALIZADO PARA STRAPI V5: Busca usando a URL com documentId
+        const response = await fetch(`/api/servicos/${documentId}?populate=*`, {
           headers: { 'Authorization': `Bearer ${STRAPI_API_TOKEN}` },
         });
 
@@ -67,7 +68,7 @@ const ServiceDetail = () => {
     };
 
     fetchService();
-  }, [id]); // Executa sempre que o ID na URL mudar
+  }, [documentId]); // ATUALIZADO: O gatilho do efeito agora é 'documentId'
 
   const imageUrl = service?.imagem?.url;
 

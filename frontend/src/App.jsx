@@ -36,11 +36,11 @@ function App() {
             <Route path="/projetos-teste" element={<Projetos />} />
             
             {/* 
-              PASSO 3.2: A nova rota dinâmica. 
-              Isso captura qualquer URL como /servicos/1, /servicos/2, etc.
-              e renderiza o componente ServiceDetail, passando o 'id' para ele.
+              ROTA ATUALIZADA PARA O STRAPI V5
+              A rota agora espera um 'documentId' (uma string longa) em vez 
+              de um 'id' numérico, conforme a nova arquitetura do Strapi.
             */}
-            <Route path="/servicos/:id" element={<ServiceDetail />} />
+            <Route path="/servicos/:documentId" element={<ServiceDetail />} />
 
             {/* As rotas antigas e estáticas para cada serviço foram removidas. */}
 
