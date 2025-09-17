@@ -5,14 +5,13 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Projects from './pages/Projects.jsx';
 import Blog from './pages/Blog.jsx';
 import Contact from './pages/Contact.jsx';
 import Projetos from './pages/Projetos.jsx';
 
 // Importações das páginas de detalhes
 import ServiceDetail from './pages/ServiceDetail.jsx';
-import ProjetoDetail from './pages/ProjetoDetail.jsx'; // Importação estava faltando
+import ProjetoDetail from './pages/ProjetoDetail.jsx';
 
 function App() {
   return (
@@ -25,13 +24,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projetos" element={<Projetos />} />
+            <Route path="/projetos" element={<Projetos />} /> 
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             
             {/* Rotas de Detalhes Dinâmicas */}
             <Route path="/servicos/:documentId" element={<ServiceDetail />} />
+            {/* PADRÃO CORRIGIDO: A rota de projetos agora usa /:documentId para consistência. */}
             <Route path="/projetos/:documentId" element={<ProjetoDetail />} />
 
           </Routes>

@@ -43,7 +43,7 @@
     },
     "data_do_projeto": {
       "type": "date",
-      "required": true
+      "required": false
     }
   }
 }

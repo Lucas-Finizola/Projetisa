@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Importando o Link
 import logo from '../../assets/images/logo.PNG';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Função para fechar o menu ao clicar em um link
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="bg-green-600 text-white p-4 sticky top-0 z-50 shadow-md">
@@ -10,18 +16,21 @@ const Header = () => {
         <nav className="flex justify-between items-center md:grid md:grid-cols-3">
           {/* Coluna da Esquerda: Logo */}
           <div className="justify-self-start">
-            <img src={logo} alt="Logo da Projetisa" className="h-12" />
+            <Link to="/">
+              <img src={logo} alt="Logo da Projetisa" className="h-12" />
+            </Link>
           </div>
 
           {/* Coluna Central: Navegação Desktop */}
           <div className="hidden md:flex justify-self-center">
             <ul className="flex space-x-4">
-              <li><a href="/" className="hover:text-gray-300">Início</a></li>
-              <li><a href="/about" className="hover:text-gray-300">Sobre</a></li>
-              <li><a href="/services" className="hover:text-gray-300">Serviços</a></li>
-              <li><a href="/projects" className="hover:text-gray-300">Projetos</a></li>
-              <li><a href="/blog" className="hover:text-gray-300">Blog</a></li>
-              <li><a href="/contact" className="hover:text-gray-300">Contato</a></li>
+              <li><Link to="/" className="hover:text-gray-300">Início</Link></li>
+              <li><Link to="/about" className="hover:text-gray-300">Sobre</Link></li>
+              <li><Link to="/services" className="hover:text-gray-300">Serviços</Link></li>
+              {/* ROTA CORRIGIDA */}
+              <li><Link to="/projetos" className="hover:text-gray-300">Projetos</Link></li>
+              <li><Link to="/blog" className="hover:text-gray-300">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-gray-300">Contato</Link></li>
             </ul>
           </div>
 
@@ -41,12 +50,13 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4">
             <ul className="flex flex-col items-center space-y-4">
-              <li><a href="/" className="hover:text-gray-300 block py-2">Início</a></li>
-              <li><a href="/about" className="hover:text-gray-300 block py-2">Sobre</a></li>
-              <li><a href="/services" className="hover:text-gray-300 block py-2">Serviços</a></li>
-              <li><a href="/projects" className="hover:text-gray-300 block py-2">Projetos</a></li>
-              <li><a href="/blog" className="hover:text-gray-300 block py-2">Blog</a></li>
-              <li><a href="/contact" className="hover:text-gray-300 block py-2">Contato</a></li>
+              <li><Link to="/" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Início</Link></li>
+              <li><Link to="/about" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Sobre</Link></li>
+              <li><Link to="/services" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Serviços</Link></li>
+              {/* ROTA CORRIGIDA */}
+              <li><Link to="/projetos" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Projetos</Link></li>
+              <li><Link to="/blog" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Contato</Link></li>
             </ul>
           </div>
         )}

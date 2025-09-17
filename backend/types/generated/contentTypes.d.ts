@@ -388,7 +388,7 @@ export interface ApiProjetoProjeto extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    data_do_projeto: Schema.Attribute.Date & Schema.Attribute.Required;
+    data_do_projeto: Schema.Attribute.Date;
     descricao: Schema.Attribute.Blocks & Schema.Attribute.Required;
     galeria: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -431,7 +431,7 @@ export interface ApiPublicacaoPublicacao extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    data_publicacao: Schema.Attribute.Date & Schema.Attribute.Required;
+    data_publicacao: Schema.Attribute.Date;
     imagens: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
