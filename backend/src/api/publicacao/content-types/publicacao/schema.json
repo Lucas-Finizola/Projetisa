@@ -16,28 +16,46 @@
       "type": "string",
       "required": true
     },
-    "conteudo": {
-      "type": "richtext"
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
     },
-    "imagens": {
+    "Resumo": {
+      "type": "string"
+    },
+    "imagem_destacada": {
       "type": "media",
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
+    },
+    "conteudo": {
+      "type": "blocks",
+      "required": true
     },
     "data_publicacao": {
-      "type": "date",
-      "required": false
+      "type": "date"
     },
-    "categoria": {
-      "type": "enumeration",
-      "enum": [
-        "Noticia",
-        "Informacao Tecnica",
-        "Estudo de Caso"
+    "galeria": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categoria.categoria",
+      "mappedBy": "publicacao"
     }
   }
 }

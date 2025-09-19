@@ -27,9 +27,9 @@ const Header = () => {
               <li><Link to="/" className="hover:text-gray-300">Início</Link></li>
               <li><Link to="/about" className="hover:text-gray-300">Sobre</Link></li>
               <li><Link to="/services" className="hover:text-gray-300">Serviços</Link></li>
-              {/* ROTA CORRIGIDA */}
               <li><Link to="/projetos" className="hover:text-gray-300">Projetos</Link></li>
-              <li><Link to="/blog" className="hover:text-gray-300">Blog</Link></li>
+              {/* ATUALIZADO: Link para Notícias */}
+              <li><Link to="/noticias" className="hover:text-gray-300">Notícias</Link></li>
               <li><Link to="/contact" className="hover:text-gray-300">Contato</Link></li>
             </ul>
           </div>
@@ -53,9 +53,9 @@ const Header = () => {
               <li><Link to="/" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Início</Link></li>
               <li><Link to="/about" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Sobre</Link></li>
               <li><Link to="/services" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Serviços</Link></li>
-              {/* ROTA CORRIGIDA */}
               <li><Link to="/projetos" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Projetos</Link></li>
-              <li><Link to="/blog" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Blog</Link></li>
+              {/* ATUALIZADO: Link para Notícias */}
+              <li><Link to="/noticias" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Notícias</Link></li>
               <li><Link to="/contact" className="hover:text-gray-300 block py-2" onClick={handleLinkClick}>Contato</Link></li>
             </ul>
           </div>

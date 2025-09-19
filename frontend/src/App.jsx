@@ -5,13 +5,16 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Blog from './pages/Blog.jsx';
 import Contact from './pages/Contact.jsx';
 import Projetos from './pages/Projetos.jsx';
 
 // Importações das páginas de detalhes
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import ProjetoDetail from './pages/ProjetoDetail.jsx';
+
+// NOVAS IMPORTAÇÕES PARA NOTÍCIAS
+import Noticias from './pages/Noticias.jsx';
+import NoticiaDetail from './pages/NoticiaDetail.jsx';
 
 function App() {
   return (
@@ -25,12 +28,16 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/projetos" element={<Projetos />} /> 
-            <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* ROTA ANTIGA DO BLOG REMOVIDA */}
+            
+            {/* NOVAS ROTAS PARA NOTÍCIAS (AGORA COM :id) */}
+            <Route path="/noticias" element={<Noticias />} />
+            <Route path="/noticias/:id" element={<NoticiaDetail />} />
             
             {/* Rotas de Detalhes Dinâmicas */}
             <Route path="/servicos/:documentId" element={<ServiceDetail />} />
-            {/* PADRÃO CORRIGIDO: A rota de projetos agora usa /:documentId para consistência. */}
             <Route path="/projetos/:documentId" element={<ProjetoDetail />} />
 
           </Routes>
